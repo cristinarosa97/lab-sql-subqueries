@@ -83,5 +83,5 @@ ON inv.film_id = film.film_id;
 
 SELECT customer_id, SUM(amount) as total_amount_spent
 FROM payment
-WHERE amount > (SELECT AVG(amount) FROM payment)
-GROUP BY customer_id;
+GROUP BY customer_id
+HAVING total_amount_spent > (SELECT AVG(amount) FROM payment);
